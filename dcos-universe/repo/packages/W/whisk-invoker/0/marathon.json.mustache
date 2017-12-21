@@ -7,7 +7,8 @@
     ["hostname", "UNIQUE"]
   ],
   "env": {
-
+	"ZOOKEEPER_HOSTS": "exhibitor-dcos.marathon.mesos:2181",
+	
     "WHISK_VERSION_NAME": "local",
     "WHISK_VERSION_DATE": "09/01/2016",
     "WHISK_VERSION_BUILDNO": "latest",
@@ -21,7 +22,10 @@
     "DB_WHISK_ACTIONS": "local_whisks",
     "DB_WHISK_AUTHS": "local_subjects",
     "DB_WHISK_ACTIVATIONS": "local_activations",
-
+	"DB_WHISK_ACTIONS_DDOC": "whisks.v2",
+	"DB_WHISK_ACTIVATIONS_FILTER_DDOC": "whisks-filters.v2",
+	"DB_WHISK_ACTIVATIONS_DDOC": "whisks.v2",
+		
     "KAFKA_NUMPARTITIONS": "1",
 
     "DEFAULTLIMITS_ACTIONS_INVOKES_PERMINUTE": "60000",
@@ -42,6 +46,7 @@
     "CONSUL_HOST_PORT4": "{{consul.port}}",
 
     "KAFKA_HOST": "{{kafka.location}}",
+    "KAFKA_HOSTS": "{{kafka.location}}",
     "KAFKA_HOST_PORT": "{{kafka.port}}",
 
     "DB_PROVIDER": "CouchDB",
@@ -57,7 +62,7 @@
 
     "RUNTIMES_MANIFEST": "{\"runtimes\":{\"nodejs\":[{\"kind\":\"nodejs\",\"image\":{\"name\":\"nodejsaction\"},\"deprecated\":true},{\"kind\":\"nodejs:6\",\"default\":true,\"image\":{\"name\":\"nodejs6action\"}}],\"python\":[{\"kind\":\"python\",\"image\":{\"name\":\"python2action\"}},{\"kind\":\"python:2\",\"default\":true,\"image\":{\"name\":\"python2action\"}},{\"kind\":\"python:3\",\"image\":{\"name\":\"python3action\"}}],\"swift\":[{\"kind\":\"swift\",\"image\":{\"name\":\"swiftaction\"},\"deprecated\":true},{\"kind\":\"swift:3\",\"default\":true,\"image\":{\"name\":\"swift3action\"}}],\"java\":[{\"kind\":\"java\",\"attached\":{\"attachmentName\":\"jarfile\",\"attachmentType\":\"application\/java-archive\"},\"sentinelledLogs\":false,\"requireMain\":true,\"image\":{\"name\":\"java8action\"},\"default\":true}]}}",
 
-    "DOCKER_REGISTRY": "",
+    "DOCKER_REGISTRY": "master.mesos:5000",
     "DOCKER_IMAGE_PREFIX": "{{service.docker_image_prefix}}",
     "INVOKER_CONTAINER_NETWORK": "bridge",
     "INVOKER_INSTANCES": "1"

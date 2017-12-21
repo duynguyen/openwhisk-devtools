@@ -4,7 +4,9 @@
   "mem": {{service.mem}},
   "instances": {{service.instances}},
   "env": {
-
+  
+	"AKKA_CLUSTER_SEED_NODES": "[]",
+	
     "WHISK_VERSION_NAME": "local",
     "WHISK_VERSION_DATE": "09/01/2016",
     "WHISK_VERSION_BUILDNO": "latest",
@@ -18,9 +20,15 @@
     "DB_WHISK_ACTIONS": "local_whisks",
     "DB_WHISK_AUTHS": "local_subjects",
     "DB_WHISK_ACTIVATIONS": "local_activations",
-
+    "DB_WHISK_ACTIONS_DDOC": "whisks.v2",
+    "DB_WHISK_ACTIVATIONS_FILTER_DDOC": "whisks-filters.v2",
+    "DB_WHISK_ACTIVATIONS_DDOC": "whisks.v2",
+    
     "KAFKA_NUMPARTITIONS": "1",
-
+	"CONTROLLER_INSTANCES": "1",
+	"CONTROLLER_LOCALBOOKKEEPING": "true",
+	"CONTROLLER_HA": "False",
+	
     "DEFAULTLIMITS_ACTIONS_INVOKES_PERMINUTE": "60000",
     "DEFAULTLIMITS_ACTIONS_INVOKES_CONCURRENT": "5000",
     "DEFAULTLIMITS_TRIGGERS_FIRES_PERMINUTE": "60000",
@@ -31,7 +39,8 @@
     "LIMITS_ACTIONS_INVOKES_CONCURRENT": "5000",
     "LIMITS_TRIGGERS_FIRES_PERMINUTE": "60000",
     "LIMITS_ACTIONS_INVOKES_CONCURRENTINSYSTEM": "5000",
-
+	"LIMITS_ACTIONS_SEQUENCE_MAXLENGTH": "20",
+	
     "COMPONENT_NAME": "controller",
     "PORT": "{{service.port}}",
 
@@ -39,6 +48,7 @@
     "CONSUL_HOST_PORT4": "{{consul.port}}",
 
     "KAFKA_HOST": "{{kafka.location}}",
+    "KAFKA_HOSTS": "{{kafka.location}}",
     "KAFKA_HOST_PORT": "{{kafka.port}}",
 
     "DB_PROVIDER": "CouchDB",
